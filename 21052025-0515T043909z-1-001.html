@@ -1,1 +1,451 @@
-Test
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tanda Tangan Elektronik</title>
+    
+    
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- PDF.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.11.338/pdf.min.js"></script>
+    
+    <!-- PWA Manifest -->
+    <link rel="manifest" href="manifest.json">
+    
+    <style>
+        .document-card {
+            transition: transform 0.2s;
+        }
+        .document-card:hover {
+            transform: translateY(-3px);
+        }
+        #pdfViewerModal {
+            --bs-modal-width: 90%;
+        }
+        #pdfCanvas {
+            width: 100%;
+            border: 1px solid #dee2e6;
+        }
+        .loading-pdf {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 70vh;
+        }
+        .status-badge {
+            font-size: 0.8rem;
+            padding: 0.35em 0.65em;
+        }
+    </style>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            color: #333;
+            line-height: 1.6;
+            border-radius:10px;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            
+            border-radius: 10px;
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+            border-bottom: 2px solid #eee;
+            padding-bottom: 20px;
+        }
+        .header img {
+            max-height: 80px;
+            margin-bottom: 10px;
+        }
+        .header h1 {
+            margin: 0;
+            color: #0066cc;
+            font-size: 24px;
+        }
+        .header p {
+            margin: 5px 0 0;
+            color: #666;
+        }
+        .doc-info {
+            background-color: #f5f5f5;
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+        .doc-info p {
+            margin: 5px 0;
+        }
+        .signature-section {
+            margin-top: 30px;
+        }
+        .signature-box {
+            border: 1px solid #ddd;
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+        .signature-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+        .signature-item {
+            text-align: center;
+            width: 48%;
+        }
+        .signature-image {
+            height: 100px;
+            margin-bottom: 10px;
+            border: 1px solid #eee;
+            background-color: #f9f9f9;
+        }
+        .signature-name {
+            font-weight: bold;
+            margin: 5px 0;
+        }
+        .signature-position {
+            color: #666;
+            font-size: 14px;
+        }
+        .timestamp {
+            font-size: 14px;
+            color: #666;
+            margin-top: 5px;
+        }
+        .footer {
+            margin-top: 30px;
+            text-align: center;
+            font-size: 12px;
+            color: #999;
+            border-top: 1px solid #eee;
+            padding-top: 15px;
+        }
+        .verification-info {
+            background-color: #f0f7ff;
+            padding: 15px;
+            border-radius: 5px;
+            margin-top: 20px;
+            font-size: 14px;
+        }
+        .btn {
+            display: inline-block;
+            padding: 8px 15px;
+            background-color: #0066cc;
+            color: white;
+            text-decoration: none;
+            border-radius: 4px;
+            margin-top: 10px;
+            font-size: 14px;
+        }
+        .btn:hover {
+            background-color: #0055aa;
+        }
+    </style>
+</head>
+<body>
+
+
+    
+        <!-- Dokumen Lampiran -->
+        <div class="row">
+            <div class="col-12">
+            </div>
+        </div>
+    </div>
+    
+    <!-- PDF Viewer Modal -->
+   
+
+
+
+
+    <div class="container">
+        <div class="header">
+            <h1 class="h4 mb-0 text-success">
+                <i class="bi bi-file-earmark-check"></i> Verifikasi Data Dokumen
+            </h1>
+            <p>Dokumen ini telah ditandatangani secara elektronik</p>
+        </div>
+        
+        <div class="card border-success document-card">
+            <div class="card-header bg-success text-white">
+                <h2 class="h6 mb-0">Informasi Dokumen</h2>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-sm">
+                        <tbody>
+                            <tr>
+                                <th width="40%">Nama Dokumen</th>
+                                <td>Surat Lamaran Kerja Dosen</td>
+                            </tr>
+                            <tr>
+                                <th>Kepada Yth :</th>
+                                <td>Rektor Universitas Multimedia Nusantara</td>
+                            </tr>
+                            <tr>
+                                <th>Tanggal Dokumen</th>
+                                <td>21 Mei  2025</td>
+                            </tr>
+                            <tr>
+                                <th>Status</th>
+                                <td>
+                                    <span class="badge bg-success status-badge">
+                                        <i class="bi bi-check-circle"></i> Valid
+                                    </span>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>                    
+                    <div class="list-group-item d-flex justify-content-between align-items-center">
+                        <div>
+                            <i class="bi bi-file-earmark-pdf text-danger"></i>
+                            <span class="ms-2">Full-time_Lecturer_Application_Letter.pdf</span>
+                            <small class="text-muted ms-2">(2.4 MB)</small>
+                        </div>
+                        <button class="btn btn-sm btn-outline-primary view-pdf-btn" data-pdf-url="https://nvhardiansyah.wordpress.com/wp-content/uploads/2024/04/nhardiansyah-cv-english.pdf">
+                            <i class="bi bi-eye"></i> View PDF
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal fade" id="pdfViewerModal" tabindex="-1" aria-labelledby="pdfViewerModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header bg-success text-white">
+                        <h5 class="modal-title" id="pdfViewerModalLabel">PDF Viewer SSSS</h5>
+                        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div id="pdfLoading" class="loading-pdf">
+                            <div class="text-center">
+                                <div class="spinner-border text-success" role="status">
+                                    <span class="visually-hidden">Loading...</span>
+                                </div>
+                                <p class="mt-2">Memuat dokumen PDF...</p>
+                            </div>
+                        </div>
+                        <div id="pdfContainer" style="display: none;">
+                            <div class="d-flex justify-content-between mb-3">
+                                <button id="prevPage" class="btn btn-sm btn-outline-success">
+                                    <i class="bi bi-chevron-left"></i> Sebelumnya
+                                </button>
+                                <span id="pageInfo">Halaman 1 dari 10</span>
+                                <button id="nextPage" class="btn btn-sm btn-outline-success">
+                                    Selanjutnya <i class="bi bi-chevron-right"></i>
+                                </button>
+                            </div>
+                            <canvas id="pdfCanvas"></canvas>
+                        </div>
+                        <div id="pdfError" class="alert alert-danger mt-3" style="display: none;"></div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+                        <a id="downloadPdf" href="#" class="btn btn-success" download>
+                            <i class="bi bi-download"></i> Unduh PDF
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        
+        
+        <div class="signature-section">
+            <div class="signature-box">
+                <div class="signature-row">
+                    <div class="signature-item">
+                    </div>
+                    
+                    <div class="signature-item">
+                        <div class="timestamp">Ditandatangani pada: 12 Mei 2025 09:15 WIB</div>
+                        <img src="https://nvhardiansyah.wordpress.com/wp-content/uploads/2025/05/ttd-pepey.png" alt="Tanda Tangan Penerima" style="max-width:50%; max-height:100%;">
+                        <div class="signature-name">Novi Hardiansyah, M.Kom., MTC.</div>
+                        <div class="signature-position"><i>Sebagai Pelamar</i></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        21052025-0515T043909z-1-001.html
+        
+        <div class="footer">
+            <p>&copy; Copyright © 2017 - 2025 KANG PEPEY. <br>
+                All Rights Reserved.</p>
+        </div>
+    </div>
+
+
+    
+    
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+    
+    <!-- Bootstrap JS Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <script>
+        // Set PDF.js worker path
+        pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.11.338/pdf.worker.min.js';
+        
+        // Variabel untuk PDF viewer
+        let pdfDoc = null,
+            pageNum = 1,
+            pageRendering = false,
+            pageNumPending = null,
+            scale = 1.5;
+        
+        // Inisialisasi modal PDF viewer
+        const pdfViewerModal = new bootstrap.Modal(document.getElementById('pdfViewerModal'));
+        const pdfLoading = document.getElementById('pdfLoading');
+        const pdfContainer = document.getElementById('pdfContainer');
+        const pdfCanvas = document.getElementById('pdfCanvas');
+        const pageInfo = document.getElementById('pageInfo');
+        const prevPageBtn = document.getElementById('prevPage');
+        const nextPageBtn = document.getElementById('nextPage');
+        const downloadPdfBtn = document.getElementById('downloadPdf');
+        const pdfError = document.getElementById('pdfError');
+        
+        // Fungsi untuk render halaman PDF
+        function renderPage(num) {
+            pageRendering = true;
+            
+            pdfDoc.getPage(num).then(function(page) {
+                const viewport = page.getViewport({ scale: scale });
+                pdfCanvas.height = viewport.height;
+                pdfCanvas.width = viewport.width;
+                
+                const renderContext = {
+                    canvasContext: pdfCanvas.getContext('2d'),
+                    viewport: viewport
+                };
+                
+                const renderTask = page.render(renderContext);
+                
+                renderTask.promise.then(function() {
+                    pageRendering = false;
+                    if (pageNumPending !== null) {
+                        renderPage(pageNumPending);
+                        pageNumPending = null;
+                    }
+                });
+            });
+            
+            pageInfo.textContent = `Halaman ${num} dari ${pdfDoc.numPages}`;
+            
+            // Update tombol navigasi
+            prevPageBtn.disabled = num <= 1;
+            nextPageBtn.disabled = num >= pdfDoc.numPages;
+        }
+        
+        // Navigasi halaman
+        function queueRenderPage(num) {
+            if (pageRendering) {
+                pageNumPending = num;
+            } else {
+                renderPage(num);
+            }
+        }
+        
+        // Tombol sebelumnya
+        prevPageBtn.addEventListener('click', function() {
+            if (pageNum <= 1) return;
+            pageNum--;
+            queueRenderPage(pageNum);
+        });
+        
+        // Tombol selanjutnya
+        nextPageBtn.addEventListener('click', function() {
+            if (pageNum >= pdfDoc.numPages) return;
+            pageNum++;
+            queueRenderPage(pageNum);
+        });
+        
+        // Event untuk tombol view PDF
+        document.querySelectorAll('.view-pdf-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                const pdfUrl = this.getAttribute('data-pdf-url');
+                openPdfViewer(pdfUrl);
+            });
+        });
+        
+        // Fungsi untuk membuka PDF viewer
+        function openPdfViewer(pdfUrl) {
+            // Reset state
+            pdfLoading.style.display = 'flex';
+            pdfContainer.style.display = 'none';
+            pdfError.style.display = 'none';
+            
+            // Set download link
+            downloadPdfBtn.href = pdfUrl;
+            
+            // Buka modal
+            pdfViewerModal.show();
+            
+            // Load PDF
+            pdfjsLib.getDocument(pdfUrl).promise.then(function(pdfDoc_) {
+                pdfDoc = pdfDoc_;
+                
+                // Tampilkan PDF container
+                pdfLoading.style.display = 'none';
+                pdfContainer.style.display = 'block';
+            }).catch(function(error) {
+                console.error('Error loading PDF:', error);
+                pdfLoading.style.display = 'none';
+                pdfError.textContent = 'Dokumen tidak bisa ditampilkan dan silahkan klik Unduh PDF: ' + error.message;
+                pdfError.style.display = 'block';
+            });
+        }
+        
+        // PWA Installation
+        let deferredPrompt;
+        const installBtn = document.getElementById('installBtn');
+        
+        window.addEventListener('beforeinstallprompt', (e) => {
+            e.preventDefault();
+            deferredPrompt = e;
+            installBtn.classList.remove('d-none');
+        });
+        
+        installBtn.addEventListener('click', async () => {
+            if (!deferredPrompt) return;
+            
+            deferredPrompt.prompt();
+            const { outcome } = await deferredPrompt.userChoice;
+            
+            if (outcome === 'accepted') {
+                installBtn.classList.add('d-none');
+            }
+            
+            deferredPrompt = null;
+        });
+        
+        // Service Worker Registration
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('sw.js')
+                    .then(registration => {
+                        console.log('ServiceWorker registered:', registration);
+                    })
+                    .catch(error => {
+                        console.log('ServiceWorker registration failed:', error);
+                    });
+            });
+        }
+    </script>
+</body>
+</html>
