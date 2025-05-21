@@ -156,19 +156,6 @@
 <body>
 
 
-    
-        <!-- Dokumen Lampiran -->
-        <div class="row">
-            <div class="col-12">
-            </div>
-        </div>
-    </div>
-    
-    <!-- PDF Viewer Modal -->
-   
-
-
-
 
     <div class="container">
         <div class="header">
@@ -178,8 +165,8 @@
             <p>Dokumen ini telah ditandatangani secara elektronik</p>
         </div>
         
-        <div class="card border-success document-card">
-            <div class="card-header bg-success text-white">
+        <div class="card border-secondary document-card">
+            <div class="card-header bg-secondary text-white">
                 <h2 class="h6 mb-0">Informasi Dokumen</h2>
             </div>
             <div class="card-body">
@@ -188,7 +175,7 @@
                         <tbody>
                             <tr>
                                 <th width="40%">Nama Dokumen</th>
-                                <td>Surat Lamaran Kerja Dosen</td>
+                                <td>Surat Lamaran Kerja Dosen UMN</td>
                             </tr>
                             <tr>
                                 <th>Kepada Yth :</th>
@@ -202,86 +189,59 @@
                                 <th>Status</th>
                                 <td>
                                     <span class="badge bg-success status-badge">
-                                        <i class="bi bi-check-circle"></i> Valid
+                                        <i class="bi bi-check-circle"></i> Terverifikasi
                                     </span>
                                 </td>
                             </tr>
                         </tbody>
-                    </table>                    
-                    <div class="list-group-item d-flex justify-content-between align-items-center">
-                        <div>
-                            <i class="bi bi-file-earmark-pdf text-danger"></i>
-                            <span class="ms-2">Full-time_Lecturer_Application_Letter.pdf</span>
-                            <small class="text-muted ms-2">(2.4 MB)</small>
-                        </div>
-                        <button class="btn btn-sm btn-outline-primary view-pdf-btn" data-pdf-url="https://nvhardiansyah.wordpress.com/wp-content/uploads/2024/04/nhardiansyah-cv-english.pdf">
-                            <i class="bi bi-eye"></i> View PDF
-                        </button>
-                    </div>
+                    </table> 
                 </div>
             </div>
         </div>
 
-        <div class="modal fade" id="pdfViewerModal" tabindex="-1" aria-labelledby="pdfViewerModalLabel" aria-hidden="true">
-            <div class="modal-dialog modal-lg">
-                <div class="modal-content">
-                    <div class="modal-header bg-success text-white">
-                        <h5 class="modal-title" id="pdfViewerModalLabel">PDF Viewer SSSS</h5>
-                        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body">
-                        <div id="pdfLoading" class="loading-pdf">
-                            <div class="text-center">
-                                <div class="spinner-border text-success" role="status">
-                                    <span class="visually-hidden">Loading...</span>
-                                </div>
-                                <p class="mt-2">Memuat dokumen PDF...</p>
-                            </div>
-                        </div>
-                        <div id="pdfContainer" style="display: none;">
-                            <div class="d-flex justify-content-between mb-3">
-                                <button id="prevPage" class="btn btn-sm btn-outline-success">
-                                    <i class="bi bi-chevron-left"></i> Sebelumnya
-                                </button>
-                                <span id="pageInfo">Halaman 1 dari 10</span>
-                                <button id="nextPage" class="btn btn-sm btn-outline-success">
-                                    Selanjutnya <i class="bi bi-chevron-right"></i>
-                                </button>
-                            </div>
-                            <canvas id="pdfCanvas"></canvas>
-                        </div>
-                        <div id="pdfError" class="alert alert-danger mt-3" style="display: none;"></div>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
-                        <a id="downloadPdf" href="#" class="btn btn-success" download>
-                            <i class="bi bi-download"></i> Unduh PDF
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-
-        
-        
         <div class="signature-section">
             <div class="signature-box">
                 <div class="signature-row">
                     <div class="signature-item">
+                        <div class="timestamp">Ditandatangani pada: 12 Mei 2025 09:15 WIB</div>
+                        <div class="signature-image">
+                            <img src="https://nvhardiansyah.wordpress.com/wp-content/uploads/2025/05/ttd-pepey.png" alt="Tanda Tangan Penerima" style="max-width:50%; max-height:100%;">
+                        </div>
+                        <div class="signature-name">Novi Hardiansyah, M.Kom., MTC. <br> <sup><i>Sebagai Pelamar</i></sup></div>
                     </div>
                     
-                    <div class="signature-item">
-                        <div class="timestamp">Ditandatangani pada: 12 Mei 2025 09:15 WIB</div>
-                        <img src="https://nvhardiansyah.wordpress.com/wp-content/uploads/2025/05/ttd-pepey.png" alt="Tanda Tangan Penerima" style="max-width:50%; max-height:100%;">
-                        <div class="signature-name">Novi Hardiansyah, M.Kom., MTC.</div>
-                        <div class="signature-position"><i>Sebagai Pelamar</i></div>
+                    <div class="signature-item verification-info">
+                        <p><i><strong>Status:</strong> <span style="color:green;">Valid</span> - This document file has been digitally verified.</i></p>
+                        <div class="signature-position"><i class="bi bi-file-earmark-pdf text-danger"></i> Full-time_Lecturer_Application_Letter.pdf</div>
+                        <div class="d-grid gap-2">
+                            <button class="btn btn-sm btn-outline-primary view-pdf-btn" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                                <i class="bi bi-eye"></i> View PDF
+                            </button>
+                        </div>
                     </div>
                 </div>
             </div>
+
         </div>
 
-        21052025-0515T043909z-1-001.html
+        <!-- Modal -->
+        <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                <h5 class="modal-title" id="staticBackdropLabel">Document Cloud</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <iframe src="https://drive.google.com/file/d/1GgVTCJhbnACbNYN923KFGgzq5dNZFalI/preview" width="100%" height="480" allow="autoplay"></iframe>
+                </div>
+                <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <a href="https://nvhardiansyah.wordpress.com" target="_blank" rel="noopener noreferrer" class="btn btn-danger bg-danger">Portal</a>
+                </div>
+            </div>
+            </div>
+        </div>
         
         <div class="footer">
             <p>&copy; Copyright © 2017 - 2025 KANG PEPEY. <br>
