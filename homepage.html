@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tanda Tangan Elektronik</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            color: #333;
+            line-height: 1.6;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+            border-bottom: 2px solid #eee;
+            padding-bottom: 20px;
+        }
+        .header img {
+            max-height: 80px;
+            margin-bottom: 10px;
+        }
+        .header h1 {
+            margin: 0;
+            color: #0066cc;
+            font-size: 24px;
+        }
+        .header p {
+            margin: 5px 0 0;
+            color: #666;
+        }
+        .doc-info {
+            background-color: #f5f5f5;
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+        .doc-info p {
+            margin: 5px 0;
+        }
+        .signature-section {
+            margin-top: 30px;
+        }
+        .signature-box {
+            border: 1px solid #ddd;
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+        .signature-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+        .signature-item {
+            text-align: center;
+            width: 48%;
+        }
+        .signature-image {
+            height: 100px;
+            margin-bottom: 10px;
+            border: 1px solid #eee;
+            background-color: #f9f9f9;
+        }
+        .signature-name {
+            font-weight: bold;
+            margin: 5px 0;
+        }
+        .signature-position {
+            color: #666;
+            font-size: 14px;
+        }
+        .timestamp {
+            font-size: 14px;
+            color: #666;
+            margin-top: 5px;
+        }
+        .footer {
+            margin-top: 30px;
+            text-align: center;
+            font-size: 12px;
+            color: #999;
+            border-top: 1px solid #eee;
+            padding-top: 15px;
+        }
+        .verification-info {
+            background-color: #f0f7ff;
+            padding: 15px;
+            border-radius: 5px;
+            margin-top: 20px;
+            font-size: 14px;
+        }
+        .btn {
+            display: inline-block;
+            padding: 8px 15px;
+            background-color: #0066cc;
+            color: white;
+            text-decoration: none;
+            border-radius: 4px;
+            margin-top: 10px;
+            font-size: 14px;
+        }
+        .btn:hover {
+            background-color: #0055aa;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>TANDA TANGAN ELEKTRONIK</h1>
+            <p>Dokumen ini telah ditandatangani secara elektronik</p>
+        </div>
+        
+        <div class="doc-info">
+            <p><strong>Nama Dokumen:</strong> Surat Pernyataan</p>
+            <p><strong>Nomor Dokumen:</strong> SP/123/LLDIKTI-IV/2023</p>
+            <p><strong>Tanggal Dokumen:</strong> 15 Oktober 2023</p>
+            <p><strong>Pemilik Dokumen:</strong> Nanda Vardiansyah</p>
+        </div>
+        
+        <div class="signature-section">
+            <h2>Informasi Tanda Tangan</h2>
+            
+            <div class="signature-box">
+                <div class="signature-row">
+                    <div class="signature-item">
+                        <div class="signature-position">Penandatangan</div>
+                        <div class="signature-image">
+                            <!-- Tempat untuk gambar tanda tangan -->
+                            <img src="https://via.placeholder.com/200x100?text=Tanda+Tangan" alt="Tanda Tangan" style="max-width:100%; max-height:100%;">
+                        </div>
+                        <div class="signature-name">Nanda Vardiansyah</div>
+                        <div class="signature-position">Pemilik Dokumen</div>
+                        <div class="timestamp">Ditandatangani pada: 15 Oktober 2023 14:30 WIB</div>
+                    </div>
+                    
+                    <div class="signature-item">
+                        <div class="signature-position">Penerima</div>
+                        <div class="signature-image">
+                            <!-- Tempat untuk gambar tanda tangan penerima -->
+                            <img src="https://via.placeholder.com/200x100?text=Tanda+Tangan" alt="Tanda Tangan Penerima" style="max-width:100%; max-height:100%;">
+                        </div>
+                        <div class="signature-name">Dr. Ahmad Suryadi, M.Kom.</div>
+                        <div class="signature-position">Pejabat Berwenang</div>
+                        <div class="timestamp">Ditandatangani pada: 16 Oktober 2023 09:15 WIB</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="verification-info">
+                <h3>Verifikasi Dokumen</h3>
+                <p>Dokumen ini telah ditandatangani secara elektronik menggunakan sertifikat elektronik yang diterbitkan oleh PSrE LLDIKTI Wilayah IV.</p>
+                <p><strong>Status:</strong> <span style="color:green;">Valid</span> - Tanda tangan elektronik terverifikasi</p>
+                <a href="#" class="btn">Verifikasi Dokumen</a>
+            </div>
+        </div>
+        
+        <div class="footer">
+            <p>Dokumen ini sah berdasarkan Undang-Undang No. 11 Tahun 2008 tentang Informasi dan Transaksi Elektronik</p>
+            <p>&copy; 2023 Layanan Elektronik LLDIKTI Wilayah IV. Semua hak dilindungi.</p>
+        </div>
+    </div>
+</body>
+</html>
