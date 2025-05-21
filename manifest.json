@@ -1,4 +1,27 @@
 {
+  "name": "Verifikasi Data Dokumen",
+  "short_name": "DocVerifier",
+  "description": "Aplikasi untuk verifikasi data dokumen",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#198754",
+  "icons": [
+    {
+      "src": "icon-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "icon-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
+
+
+{
   "name": "Verifikasi Tanda Tangan Digital",
   "short_name": "TTD Verifier",
   "description": "Aplikasi untuk verifikasi tanda tangan digital",
